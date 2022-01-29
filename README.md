@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/TheShooter89/boilerplate-docker-multicontainer">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="README/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">project_title</h3>
@@ -223,4 +223,4 @@ Project Link: [https://github.com/TheShooter89/boilerplate-docker-multicontainer
 [license-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: README/screenshot.png
