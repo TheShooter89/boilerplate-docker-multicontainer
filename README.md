@@ -122,6 +122,8 @@ Inside `README/` folder are kept all static files needed by README
         ...
         README/
             log.png
+        ...
+        BLANK_README.md
   ```
 
 ### Prerequisites
