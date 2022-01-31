@@ -17,11 +17,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
+[![GitHub tag (latest SemVer pre-release)][version-shield]][version-url]
 [![Issues][issues-shield]][issues-url]
 [![GNU/GPL-3.0][license-shield]][license-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![GitHub tag (latest SemVer pre-release)][version-shield]][version-url]
 
 
 
