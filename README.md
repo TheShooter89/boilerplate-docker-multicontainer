@@ -112,6 +112,18 @@ I basically merged the two proposed solution into one, adding my own custom conf
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
+### README template
+
+This boilerplate provides an handy template for your README file, a customized version of popular README template [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+Just save `BLANK_README.md` as `README.md` (⚠️  OVERWRITING IT ⚠️) and tune it after your needs
+Inside `README/` folder are kept all static files needed by README
+  ```sh
+  boilerplate-docker/
+        ...
+        README/
+            log.png
+  ```
+
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
