@@ -18,11 +18,10 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![GNU/GPL-3.0][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![GitHub tag (latest SemVer pre-release)][version-shield]][version-url]
 
 
 
@@ -33,10 +32,10 @@
     <img src="README/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">boilerplate-docker-multicontainer</h3>
 
   <p align="center">
-    boilerplate-docker-multicontainer
+    Customized personal boilerplaite to quickly spin up a production+develepoment ready enviroment as a multi-containerized docker app
     <br />
     <a href="https://github.com/TheShooter89/boilerplate-docker-multicontainer"><strong>Explore the docs »</strong></a>
     <br />
@@ -86,7 +85,12 @@
 
 Customized personal boilerplaite to quickly spin up a production+develepoment ready enviroment as a multi-containerized docker app
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+This heavily inspired by [this video](https://youtu.be/-pTel5FojAQ) and [this post](https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f), repos below, respectively:
+
+* [Docker Multicontainer Application React Nodejs Postgres Nginx Basic](https://gitlab.com/codeching/docker-multicontainer-application-react-nodejs-postgres-nginx-basic)
+* [Setting up Docker + TypeScript + Node (Hot reloading code changes in a running container)](https://github.com/justDare/TypeScript-Node-Docker)
+
+I basically merged the two proposed solution into one, adding my own custom configs and defaults, to create a ultra-basic app dev/CI-CD/production-ready to deploy with one command (or at least just a couple)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -94,6 +98,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
+* [Docker](https://www.docker.com)
 * [React.js](https://reactjs.org/)
 * [Typescript](https://www.typescriptlang.org)
 
@@ -181,7 +186,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GNU/GPL 3.0 License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -190,7 +195,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Francesco Paoletti - paoletti.francesco@gmail.com
 
 Project Link: [https://github.com/TheShooter89/boilerplate-docker-multicontainer](https://github.com/TheShooter89/boilerplate-docker-multicontainer)
 
@@ -201,9 +206,9 @@ Project Link: [https://github.com/TheShooter89/boilerplate-docker-multicontainer
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Best-README-Template by othneildrew](https://github.com/othneildrew/Best-README-Template)
+* [Dockerizing a REact app with node and nginx - by Codeching](https://youtu.be/-pTel5FojAQ)
+* [TypeScript docker hot reloading - by Darian Sampare](https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -211,17 +216,14 @@ Project Link: [https://github.com/TheShooter89/boilerplate-docker-multicontainer
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/TheShooter89/boilerplate-docker-multicontainer.svg?style=for-the-badge
+[version-shield]: https://img.shields.io/github/v/tag/TheShooter89/boilerplate-docker-multicontainer?include_prereleases&label=version
+[version-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/tags
+[contributors-shield]: https://img.shields.io/github/contributors/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat-square
 [contributors-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TheShooter89/boilerplate-docker-multicontainer.svg?style=for-the-badge
-[forks-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/network/members
-[stars-shield]: https://img.shields.io/github/stars/TheShooter89/boilerplate-docker-multicontainer.svg?style=for-the-badge
-[stars-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TheShooter89/boilerplate-docker-multicontainer.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat-square
 [issues-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/issues
-[license-shield]: https://img.shields.io/github/license/TheShooter89/boilerplate-docker-multicontainer.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat-square
 [license-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: README/screenshot.png
-![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/TheShooter89/boilerplate-docker-multicontainer?include_prereleases)
