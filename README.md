@@ -216,14 +216,14 @@ Project Link: [https://github.com/TheShooter89/boilerplate-docker-multicontainer
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[version-shield]: https://img.shields.io/github/v/tag/TheShooter89/boilerplate-docker-multicontainer?include_prereleases&label=version
+[version-shield]: https://img.shields.io/github/v/tag/TheShooter89/boilerplate-docker-multicontainer?include_prereleases&label=version&style=flat
 [version-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/tags
-[contributors-shield]: https://img.shields.io/github/contributors/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat
 [contributors-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/graphs/contributors
-[issues-shield]: https://img.shields.io/github/issues/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat
 [issues-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/issues
-[license-shield]: https://img.shields.io/github/license/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/TheShooter89/boilerplate-docker-multicontainer.svg?style=flat
 [license-url]: https://github.com/TheShooter89/boilerplate-docker-multicontainer/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: README/screenshot.png
