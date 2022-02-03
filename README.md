@@ -88,8 +88,8 @@ Customized personal boilerplaite to quickly spin up a production+develepoment re
 
 This heavily inspired by:
 
-* [Docker Multicontainer Application React Nodejs Postgres Nginx Basic](https://youtu.be/-pTel5FojAQ) (post) - [[GitLab repo](https://gitlab.com/codeching/docker-multicontainer-application-react-nodejs-postgres-nginx-basic)]
-* [Setting up Docker + TypeScript + Node (Hot reloading code changes in a running container)](https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f) (video) - [GitHub repo](https://github.com/justDare/TypeScript-Node-Docker)
+* [Docker Multicontainer Application React Nodejs Postgres Nginx Basic](https://youtu.be/-pTel5FojAQ) (video) - [[GitLab repo](https://gitlab.com/codeching/docker-multicontainer-application-react-nodejs-postgres-nginx-basic)]
+* [Setting up Docker + TypeScript + Node (Hot reloading code changes in a running container)](https://dev.to/dariansampare/setting-up-docker-typescript-node-hot-reloading-code-changes-in-a-running-container-2b2f) (post) - [GitHub repo](https://github.com/justDare/TypeScript-Node-Docker)
 
 I basically merged the two proposed solution into one, adding my own custom configs and defaults, to create a ultra-basic app dev/CI-CD/production-ready to deploy with one command (or at least just a couple)
 
