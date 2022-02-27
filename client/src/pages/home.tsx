@@ -5,6 +5,23 @@ import {
     Link,
 } from 'react-router-dom';
 import axios from 'axios';
+import {
+    Button,
+    Col,
+    Row,
+    Layout,
+    Typography,
+} from 'antd';
+
+const {
+    Header,
+    Content,
+} = Layout;
+const {
+    Title,
+    Paragraph,
+    Text,
+} = Typography;
 
 const Home = () => {
     const getAllNumbers = useCallback(async () => {
@@ -14,14 +31,26 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <section>
-                <h1>Home page</h1>
-                <Link to='/'>GO TO '/'</Link>
-            </section>
+            <Row style={{padding: '2em'}}>
+                <Col span={16} offset={4}>
+                    <Header style={{backgroundColor: 'transparent'}}>
+                        <Title>Home page</Title>
+                    </Header>
+                    <Content>
+                        <Paragraph>This is the Home Page</Paragraph>
 
-            <section>
-                <button onClick={getAllNumbers}>GET ALL NUMBERS</button>
-            </section>
+                        <Paragraph>
+                            <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>
+                        </Paragraph>
+
+                        <Paragraph>
+                            <Link to='/'>
+                                <Button type='primary'>GO TO '/'</Button>
+                            </Link>
+                        </Paragraph>
+                    </Content>
+                </Col>
+            </Row>
         </React.Fragment>
     );
 };
