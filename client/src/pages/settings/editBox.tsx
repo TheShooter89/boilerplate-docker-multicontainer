@@ -3,7 +3,6 @@ import {
     Button,
     Col,
     Row,
-    Layout,
     Typography,
     Card,
     Switch,
@@ -12,33 +11,57 @@ import {
 import theme from '../../config/theme';
 
 const {
-    Header,
-    Content,
-} = Layout;
-const {
-    Title,
     Paragraph,
-    Text,
 } = Typography;
 
 const styles = {
     rootRow: {
         padding: '2em',
     },
-    header: {
-        backgroundColor: 'transparent',
+    button: {
+        fontFamily: `'${theme.font.serif_secondary}'`,
+    },
+    buttonWrapper: {
+        width: '100%',
+        paddingRight: '1em',
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    label: {
         fontFamily: theme.font.serif,
     },
-    headerDescription: {
-        fontFamily: theme.font.serif,
+    action: {
+        fontFamily: theme.font.default,
+    },
+    actionCol: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    card: {
+        textAlign: 'right',
     },
 };
 
-const editBox = () => {
+const SaveButton = () => {
+    const {
+        button,
+        buttonWrapper,
+    } = styles;
+    return (
+        <React.Fragment>
+            <div style={buttonWrapper}>
+                <Button style={button} type='primary'>SAVE</Button>,
+            </div>
+        </React.Fragment>
+    );
+};
+
+const EditBox = () => {
     const {
         rootRow,
-        header,
-        headerDescription,
+        label,
+        action,
+        actionCol,
     } = styles;
 
     return (
@@ -46,18 +69,63 @@ const editBox = () => {
             <Card
                 actions={[
                     null,
-                    <Button type='primary'>SAVE</Button>,
+                    <SaveButton />,
                 ]}
             >
                 <Row style={rootRow}>
                     <Col span={16}>
-                        <Paragraph>Dark Mode</Paragraph>
+                        <Paragraph style={label}>Dark Mode</Paragraph>
                     </Col>
 
-                    <Col span={6} offset={2}>
+                    <Col style={actionCol} span={6} offset={2}>
                         <Switch
+                            style={action}
                             checkedChildren='dark'
                             unCheckedChildren='light'
+                        />
+                    </Col>
+                </Row>
+
+                <Row style={rootRow}>
+                    <Col span={16}>
+                        <Paragraph style={label}>Show archived notes</Paragraph>
+                    </Col>
+
+                    <Col style={actionCol} span={6} offset={2}>
+                        <Switch
+                            style={action}
+                            checkedChildren='show'
+                            unCheckedChildren='hide'
+                            defaultChecked={true}
+                        />
+                    </Col>
+                </Row>
+
+                <Row style={rootRow}>
+                    <Col span={16}>
+                        <Paragraph style={label}>Cookies</Paragraph>
+                    </Col>
+
+                    <Col style={actionCol} span={6} offset={2}>
+                        <Switch
+                            style={action}
+                            checkedChildren='allow'
+                            unCheckedChildren='deny'
+                            defaultChecked={true}
+                        />
+                    </Col>
+                </Row>
+
+                <Row style={rootRow}>
+                    <Col span={16}>
+                        <Paragraph style={label}>Notifications</Paragraph>
+                    </Col>
+
+                    <Col style={actionCol} span={6} offset={2}>
+                        <Switch
+                            style={action}
+                            checkedChildren='on'
+                            unCheckedChildren='off'
                         />
                     </Col>
                 </Row>
@@ -66,4 +134,4 @@ const editBox = () => {
     );
 };
 
-export default editBox;
+export default EditBox;

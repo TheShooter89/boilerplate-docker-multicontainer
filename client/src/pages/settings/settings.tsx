@@ -1,12 +1,5 @@
-import React, {
-    useCallback
-} from 'react';
+import React from 'react';
 import {
-    Link,
-} from 'react-router-dom';
-import axios from 'axios';
-import {
-    Button,
     Col,
     Row,
     Layout,
@@ -16,7 +9,6 @@ import {
 import theme from '../../config/theme';
 
 import EditBox from './editBox';
-import editBox from './editBox';
 
 const {
     Header,
@@ -24,8 +16,6 @@ const {
 } = Layout;
 const {
     Title,
-    Paragraph,
-    Text,
 } = Typography;
 
 const styles = {
@@ -36,22 +26,13 @@ const styles = {
         backgroundColor: 'transparent',
         fontFamily: theme.font.serif,
     },
-    headerDescription: {
-        fontFamily: theme.font.serif,
-    },
 };
 
 const Settings = () => {
     const {
         rootRow,
         header,
-        headerDescription,
     } = styles;
-
-    const getAllNumbers = useCallback(async () => {
-        //
-        console.log('Getting all numbers...');
-    }, []);
 
     return (
         <React.Fragment>
@@ -60,20 +41,9 @@ const Settings = () => {
                     <Header style={header}>
                         <Title>Settings page</Title>
                     </Header>
+
                     <Content>
-                        <Paragraph style={headerDescription}>This is the Settings Page</Paragraph>
-
                         <EditBox />
-
-                        <Paragraph>
-                            <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>
-                        </Paragraph>
-
-                        <Paragraph>
-                            <Link to='/'>
-                                <Button type='primary'>GO TO '/'</Button>
-                            </Link>
-                        </Paragraph>
                     </Content>
                 </Col>
             </Row>
