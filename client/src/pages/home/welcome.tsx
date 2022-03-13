@@ -10,6 +10,8 @@ import {
     Typography,
 } from 'antd';
 
+import theme from '../../config/theme';
+
 const {
     Header,
     Content,
@@ -19,7 +21,22 @@ const {
     Paragraph,
 } = Typography;
 
+const styles = {
+    header: {
+        backgroundColor: 'transparent',
+        fontFamily: theme.font.serif,
+    },
+    headerDescription: {
+        fontFamily: theme.font.serif,
+    },
+};
+
 const Welcome = () => {
+    const {
+        header,
+        headerDescription,
+    } = styles;
+
     const getAllNumbers = useCallback(async () => {
         //
         console.log('Getting all numbers...');
@@ -27,11 +44,11 @@ const Welcome = () => {
 
     return (
         <React.Fragment>
-            <Header style={{backgroundColor: 'transparent'}}>
+            <Header style={header}>
                 <Title>Logoipsum Notes App</Title>
             </Header>
             <Content>
-                <Paragraph>This is a small boilerplate app showcasing a multicontainerized docker app featuring a Postgre database powering a node express backend serving a simple fully functional client React app that allow for basic interaction with notes, creating, editing, searching and filtering by tags</Paragraph>
+                <Paragraph style={headerDescription}>This is a small boilerplate app showcasing a multicontainerized docker app featuring a Postgre database powering a node express backend serving a simple fully functional client React app that allow for basic interaction with notes, creating, editing, searching and filtering by tags</Paragraph>
 
                 <Paragraph>
                     <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>
