@@ -13,6 +13,8 @@ import {
     Typography,
 } from 'antd';
 
+import theme from '../config/theme';
+
 const {
     Header,
     Content,
@@ -23,7 +25,26 @@ const {
     Text,
 } = Typography;
 
+const styles = {
+    rootRow: {
+        padding: '2em',
+    },
+    header: {
+        backgroundColor: 'transparent',
+        fontFamily: theme.font.serif,
+    },
+    headerDescription: {
+        fontFamily: theme.font.serif,
+    },
+};
+
 const Home = () => {
+    const {
+        rootRow,
+        header,
+        headerDescription,
+    } = styles;
+
     const getAllNumbers = useCallback(async () => {
         //
         console.log('Getting all numbers...');
@@ -31,13 +52,13 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <Row style={{padding: '2em'}}>
+            <Row style={rootRow}>
                 <Col span={16} offset={4}>
-                    <Header style={{backgroundColor: 'transparent'}}>
-                        <Title>Home page</Title>
+                    <Header style={header}>
+                        <Title style={{fontFamily: `${theme.font.serif}`}}>Home page</Title>
                     </Header>
                     <Content>
-                        <Paragraph>This is the Home Page</Paragraph>
+                        <Paragraph style={headerDescription}>This is the Home Page</Paragraph>
 
                         <Paragraph>
                             <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>
