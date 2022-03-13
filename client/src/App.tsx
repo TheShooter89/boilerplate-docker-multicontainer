@@ -11,7 +11,6 @@ import {
 import './App.css';
 
 import Home from './pages/home';
-import Note from './pages/note';
 import Notes from './pages/notes';
 import Settings from './pages/settings';
 
