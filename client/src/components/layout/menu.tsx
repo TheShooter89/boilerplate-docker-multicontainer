@@ -6,6 +6,7 @@ import {
 import {
     Menu as AntMenu,
     Image,
+    Space,
     Typography,
 } from 'antd';
 import {
@@ -16,17 +17,28 @@ import {
 
 import theme from '../../config/theme';
 
-import logoipsum from '../../logoipsum.svg';
-import logoipsum_small from '../../logoipsum_small.svg';
+import logoipsum from '../../assets/logoipsum.svg';
+import logoipsum_small from '../../assets/logoipsum_small.svg';
 
 const {
-    Text,
+    Paragraph,
 } = Typography;
 
 const styles = {
     menuStyle: {
         fontFamily: theme.font.serif,
     },
+};
+
+const MenuDescriptionItem = () => {
+    //
+    return (
+        <React.Fragment>
+            <Space>
+                <Paragraph ellipsis={false}>multicontaitanerized app</Paragraph>
+            </Space>
+        </React.Fragment>
+    );
 };
 
 const Menu = ({
@@ -68,7 +80,7 @@ const Menu = ({
                 <AntMenu.Item key='1'>
                     {
                         isSidebarOpen
-                            ? <Text>multicontaitanerized app</Text>
+                            ? <MenuDescriptionItem />
                             : null
                     }
                 </AntMenu.Item>

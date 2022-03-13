@@ -9,7 +9,7 @@ import {
     MenuOutlined,
 } from '@ant-design/icons';
 
-import logoipsum from '../../logoipsum.svg';
+import logoipsum from '../../assets/logoipsum.svg';
 import './header.css';
 
 const {
