@@ -1,10 +1,12 @@
 import React, {
     useState,
+    useEffect,
 } from 'react';
 import {
     Routes,
     Route,
     Link,
+    useLocation,
 } from 'react-router-dom';
 import {
     Layout,
@@ -37,10 +39,17 @@ const {
 
 function App() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    let location = useLocation();
+    const [selectedMenuItem, setSelectedMenuItem] = useState(location.pathname);
 
     const toggleSidebar = () => {
         return setIsSidebarOpen(!isSidebarOpen);
     };
+
+    useEffect(() => {
+        //
+        setSelectedMenuItem(location.pathname);
+    }, [location]);
 
     return (
         <React.Fragment>
@@ -59,7 +68,12 @@ function App() {
                         console.log(collapsed, type);
                     }}
                 >
-                    <Menu mode='inline' theme='light'>
+                    <Menu
+                        mode='inline'
+                        theme='light'
+                        selectable={false}
+                        selectedKeys={[selectedMenuItem]}
+                    >
                         <Menu.Item
                             key='0'
                             className={
@@ -85,13 +99,13 @@ function App() {
                                     : null
                             }
                         </Menu.Item>
-                        <Menu.Item key='2' icon={<DashboardOutlined />}>
+                        <Menu.Item key='/' icon={<DashboardOutlined />}>
                             <Link to='/'>Home</Link>
                         </Menu.Item>
-                        <Menu.Item key='3' icon={<FileTextOutlined />}>
+                        <Menu.Item key='/note' icon={<FileTextOutlined />}>
                             <Link to='/note'>Note</Link>
                         </Menu.Item>
-                        <Menu.Item key='4' icon={<SettingOutlined />}>
+                        <Menu.Item key='/settings' icon={<SettingOutlined />}>
                             <Link to='/settings'>Settings</Link>
                         </Menu.Item>
                     </Menu>
