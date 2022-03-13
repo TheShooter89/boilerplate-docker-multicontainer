@@ -32,7 +32,7 @@ function App() {
 
     return (
         <React.Fragment>
-            <Layout isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} selectedMenuItem={selectedMenuItem}>
+            <Layout isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/note' element={<Note />} />

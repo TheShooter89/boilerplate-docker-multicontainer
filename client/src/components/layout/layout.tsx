@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {
+    useState,
+    useEffect,
+} from 'react';
 import {
     Layout as AntLayout,
 } from 'antd';
+
+import {
+    useLocation,
+} from 'react-router-dom';
 
 import './layout.css';
 
@@ -15,7 +22,6 @@ const {
 interface LayoutProps {
     isSidebarOpen: boolean;
     toggleSidebar: () => any;
-    selectedMenuItem: string;
     children?: React.ReactNode;
 }
 
@@ -24,6 +30,13 @@ const Layout = ({
     toggleSidebar = () => console.log('hello layout Layout'),
     children,
 }: LayoutProps) => {
+    let location = useLocation();
+    const [selectedMenuItem, setSelectedMenuItem] = useState(location.pathname);
+
+    useEffect(() => {
+        //
+        setSelectedMenuItem(location.pathname);
+    }, [location]);
 
     return (
         <React.Fragment>
@@ -42,7 +55,7 @@ const Layout = ({
                         console.log(collapsed, type);
                     }}
                 >
-                    <Menu isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} selectedMenuItem={'/'} />
+                    <Menu isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} selectedMenuItem={selectedMenuItem} />
                 </Sider>
 
                 <AntLayout>
