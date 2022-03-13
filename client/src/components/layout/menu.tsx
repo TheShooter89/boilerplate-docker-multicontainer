@@ -85,13 +85,13 @@ const Menu = ({
                     }
                 </AntMenu.Item>
                 <AntMenu.Item key='/' icon={<DashboardOutlined />}>
-                    <Link to='/'>Home</Link>
+                    <Link to='/'>HOME</Link>
                 </AntMenu.Item>
                 <AntMenu.Item key='/note' icon={<FileTextOutlined />}>
-                    <Link to='/note'>Note</Link>
+                    <Link to='/note'>NOTE</Link>
                 </AntMenu.Item>
                 <AntMenu.Item key='/settings' icon={<SettingOutlined />}>
-                    <Link to='/settings'>Settings</Link>
+                    <Link to='/settings'>SETTINGS</Link>
                 </AntMenu.Item>
             </AntMenu>
         </React.Fragment>
