@@ -20,7 +20,7 @@ const Home = () => {
     return (
         <React.Fragment>
             <Row style={rootRow}>
-                <Col span={16} offset={4}>
+                <Col span={20} offset={2}>
                     <Welcome />
                 </Col>
             </Row>
