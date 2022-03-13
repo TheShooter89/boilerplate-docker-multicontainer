@@ -13,6 +13,8 @@ import {
     Typography,
 } from 'antd';
 
+import theme from '../config/theme';
+
 const {
     Header,
     Content,
@@ -31,10 +33,10 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <Row style={{padding: '2em'}}>
+            <Row style={{ padding: '2em' }}>
                 <Col span={16} offset={4}>
-                    <Header style={{backgroundColor: 'transparent'}}>
-                        <Title>Home page</Title>
+                    <Header style={{ backgroundColor: 'transparent' }}>
+                        <Title style={{ fontFamily: `${theme.font.serif}` }}>Home page</Title>
                     </Header>
                     <Content>
                         <Paragraph>This is the Home Page</Paragraph>
