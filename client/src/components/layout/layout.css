@@ -1,0 +1,48 @@
+@import '~antd/dist/antd.css';
+
+#mainLayout {
+    min-height: 100vh;
+    background-color: white;
+}
+
+.mainHeader {
+    background-color: rgba(255, 255, 255, 0.80);
+    padding: 0;
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        'sidebar-button title dark-mode-switch';
+}
+
+.header-grid-sidebar-open {
+    grid-template-areas: 
+        '. title dark-mode-switch';
+}
+
+.header-grid-item {
+    align-self: center;
+}
+
+.sidebar-button {
+    grid-area: sidebar-button;
+    padding-left: 2em;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.title {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+}
+
+.dark-mode-switch {
+    grid-area: dark-mode-switch;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2em;
+}
