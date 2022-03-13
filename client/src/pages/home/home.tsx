@@ -6,10 +6,20 @@ import {
 
 import Welcome from './welcome';
 
+const styles = {
+    rootRow: {
+        padding: '2em',
+    },
+};
+
 const Home = () => {
+    const {
+        rootRow,
+    } = styles;
+
     return (
         <React.Fragment>
-            <Row style={{padding: '2em'}}>
+            <Row style={rootRow}>
                 <Col span={16} offset={4}>
                     <Welcome />
                 </Col>
