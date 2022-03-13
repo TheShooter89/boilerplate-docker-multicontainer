@@ -13,7 +13,10 @@ import {
     Typography,
 } from 'antd';
 
-import theme from '../config/theme';
+import theme from '../../config/theme';
+
+import EditBox from './editBox';
+import editBox from './editBox';
 
 const {
     Header,
@@ -59,6 +62,8 @@ const Settings = () => {
                     </Header>
                     <Content>
                         <Paragraph style={headerDescription}>This is the Settings Page</Paragraph>
+
+                        <EditBox />
 
                         <Paragraph>
                             <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>
