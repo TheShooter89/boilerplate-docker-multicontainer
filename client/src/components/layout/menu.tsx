@@ -87,8 +87,8 @@ const Menu = ({
                 <AntMenu.Item key='/' icon={<DashboardOutlined />}>
                     <Link to='/'>HOME</Link>
                 </AntMenu.Item>
-                <AntMenu.Item key='/note' icon={<FileTextOutlined />}>
-                    <Link to='/note'>NOTE</Link>
+                <AntMenu.Item key='/notes' icon={<FileTextOutlined />}>
+                    <Link to='/notes'>NOTES</Link>
                 </AntMenu.Item>
                 <AntMenu.Item key='/settings' icon={<SettingOutlined />}>
                     <Link to='/settings'>SETTINGS</Link>

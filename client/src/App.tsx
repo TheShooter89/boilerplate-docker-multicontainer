@@ -12,6 +12,7 @@ import './App.css';
 
 import Home from './pages/home';
 import Note from './pages/note';
+import Notes from './pages/notes';
 import Settings from './pages/settings';
 
 import Layout from './components/layout';
@@ -35,7 +36,7 @@ function App() {
             <Layout isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}>
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/note' element={<Note />} />
+                    <Route path='/notes' element={<Notes />} />
                     <Route path='/settings' element={<Settings />} />
                 </Routes>
             </Layout>
