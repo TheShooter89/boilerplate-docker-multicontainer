@@ -14,6 +14,8 @@ import {
 
 import theme from '../../config/theme';
 
+import ControlPanel from './controlPanel';
+
 const {
     Header,
     Content,
@@ -53,10 +55,12 @@ const Notes = () => {
             <Row style={rootRow}>
                 <Col span={20} offset={2}>
                     <Header style={header}>
-                        <Title>Notes page</Title>
+                        <Title>Notes</Title>
                     </Header>
                     <Content>
                         <Paragraph style={headerDescription}>This is the Notes Page</Paragraph>
+
+                        <ControlPanel />
 
                         <Paragraph>
                             <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>

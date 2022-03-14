@@ -8,10 +8,16 @@ import {
     Button,
     Col,
     Row,
+    Input,
+    Radio,
     Layout,
     Typography,
     Menu,
 } from 'antd';
+import {
+    FileTextOutlined,
+    TagsOutlined,
+} from '@ant-design/icons';
 
 import theme from '../../config/theme';
 
@@ -25,8 +31,8 @@ const {
 } = Typography;
 
 const styles = {
-    rootRow: {
-        padding: '2em',
+    rootMenu: {
+        padding: '1em',
     },
     header: {
         backgroundColor: 'transparent',
@@ -37,21 +43,52 @@ const styles = {
     },
 };
 
+const dateSortOptions = [
+    {
+        label: 'newest',
+        value: 'newest',
+    },
+    {
+        label: 'oldest',
+        value: 'oldest',
+    },
+];
+
 const ControlPanel = () => {
     const {
-        rootRow,
-        header,
-        headerDescription,
+        rootMenu,
     } = styles;
-
-    const getAllNumbers = useCallback(async () => {
-        //
-        console.log('Getting all numbers...');
-    }, []);
 
     return (
         <React.Fragment>
-            <Menu mode='horizontal' selectable={false}>
+            <Menu
+                mode='horizontal'
+                selectable={false}
+                style={rootMenu}
+            >
+                <Menu.Item>
+                    <Input
+                        size='large'
+                        placeholder='search notes...'
+                        prefix={<FileTextOutlined />}
+                    />
+                </Menu.Item>
+
+                <Menu.Item>
+                    <Input
+                        size='large'
+                        placeholder='filter by tags...'
+                        prefix={<TagsOutlined />}
+                    />
+                </Menu.Item>
+
+                <Menu.Item>
+                    <Radio.Group
+                        options={dateSortOptions}
+                        optionType='button'
+                        buttonStyle='solid'
+                    />
+                </Menu.Item>
             </Menu>
         </React.Fragment>
     );
