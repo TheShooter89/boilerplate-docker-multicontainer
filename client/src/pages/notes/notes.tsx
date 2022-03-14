@@ -60,7 +60,20 @@ const Notes = () => {
                     <Content>
                         <Paragraph style={headerDescription}>This is the Notes Page</Paragraph>
 
-                        <ControlPanel />
+                        <ControlPanel tagList={[
+                            {
+                                id: 0,
+                                name: 'Zelensky',
+                            },
+                            {
+                                id: 1,
+                                name: 'Putin',
+                            },
+                            {
+                                id: 2,
+                                name: 'von Der Leyen',
+                            },
+                        ]} />
 
                         <Paragraph>
                             <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>

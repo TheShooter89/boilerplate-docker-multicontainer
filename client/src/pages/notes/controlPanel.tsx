@@ -30,6 +30,23 @@ const {
     Paragraph,
 } = Typography;
 
+// ControlPanel types
+interface ControlPanelProps {
+    searchValue?: string | number | readonly string[] | undefined;
+    tagList?: ControlPanelTag[];
+    sortBy?: 'oldest' | 'newest';
+    onSearchChange?: () => any;
+    onSearchEnter?: () => any;
+    onTagsChange?: () => any;
+    onTagsEnter?: () => any;
+    onSortChange?: () => any;
+}
+
+interface ControlPanelTag {
+    id: string | number;
+    name: string;
+}
+
 const styles = {
     rootMenu: {
         padding: '1em',
@@ -54,7 +71,30 @@ const dateSortOptions = [
     },
 ];
 
-const ControlPanel = () => {
+const ControlPanel = ({
+    searchValue = undefined,
+    tagList = [],
+    sortBy = 'newest',
+    onSearchChange = () => undefined,
+    onSearchEnter = () => undefined,
+    onTagsChange = () => undefined,
+    onTagsEnter = () => undefined,
+    onSortChange = () => undefined,
+}: ControlPanelProps) => {
+    let tagsValue = '';
+
+    tagList.map((el: ControlPanelTag, index: number): ControlPanelTag => {
+        //
+        if (index < tagList.length - 1) {
+            //
+            tagsValue += el.name + ', ';
+            return el;
+        }
+
+        tagsValue += el.name;
+        return el;
+    });
+
     const {
         rootMenu,
     } = styles;
@@ -71,6 +111,9 @@ const ControlPanel = () => {
                         size='large'
                         placeholder='search notes...'
                         prefix={<FileTextOutlined />}
+                        defaultValue={searchValue}
+                        onChange={onSearchChange}
+                        onPressEnter={onSearchEnter}
                     />
                 </Menu.Item>
 
@@ -79,6 +122,10 @@ const ControlPanel = () => {
                         size='large'
                         placeholder='filter by tags...'
                         prefix={<TagsOutlined />}
+                        defaultValue={tagsValue}
+                        onChange={onTagsChange}
+                        onPressEnter={onTagsEnter}
+                        allowClear
                     />
                 </Menu.Item>
 
@@ -87,6 +134,8 @@ const ControlPanel = () => {
                         options={dateSortOptions}
                         optionType='button'
                         buttonStyle='solid'
+                        defaultValue={sortBy}
+                        onChange={onSortChange}
                     />
                 </Menu.Item>
             </Menu>
