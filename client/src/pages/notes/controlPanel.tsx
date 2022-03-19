@@ -50,6 +50,7 @@ interface ControlPanelTag {
 const styles = {
     rootMenu: {
         padding: '1em',
+        marginBottom: '1em',
     },
     header: {
         backgroundColor: 'transparent',
