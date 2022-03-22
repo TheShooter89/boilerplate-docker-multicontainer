@@ -15,6 +15,7 @@ import {
 import theme from '../../config/theme';
 
 import ControlPanel from './controlPanel';
+import NotesListBox from './notesListBox';
 
 const {
     Header,
@@ -75,15 +76,14 @@ const Notes = () => {
                             },
                         ]} />
 
-                        <Paragraph>
-                            <Button type='primary' onClick={getAllNumbers}>GET ALL NUMBERS</Button>
-                        </Paragraph>
-
-                        <Paragraph>
-                            <Link to='/'>
-                                <Button type='primary'>GO TO '/'</Button>
-                            </Link>
-                        </Paragraph>
+                        <NotesListBox notes={[
+                            {
+                                id: 'test1',
+                                title: 'testing title',
+                                tags: [],
+                                body: 'lorem ipsum semptum',
+                            },
+                        ]} emptyMessage='whoops...no notes found!' />
                     </Content>
                 </Col>
             </Row>
