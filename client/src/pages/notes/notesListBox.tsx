@@ -38,34 +38,16 @@ export interface NotesListBoxProps {
     emptyMessage?: string;
 }
 
-const mockTags = [
-    {
-        id: 0,
-        name: 'slava'
-    },
-    {
-        id: 1,
-        name: 'ukraine'
-    },
-    {
-        id: 2,
-        name: 'invasion'
-    },
-    {
-        id: 3,
-        name: 'war'
-    },
-    {
-        id: 4,
-        name: 'victory'
-    },
-];
+const noteListRender = (list: Note[]) => {
+    //
+    const result = list.map((note: Note, index: number,) => {
+        //
+        return (
+            <MockNoteCard key={'mock-note-' + index} note={note} />
+        );
+    });
 
-const mockNote: Note = {
-    id: 0,
-    title: 'testing mock note',
-    tags: mockTags,
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur quam sit amet elementum commodo. Maecenas consequat, lectus et blandit sollicitudin, ante erat maximus risus, eget varius nulla risus vel augue. Pellentesque dolor urna, consectetur lacinia mi ornare, pharetra imperdiet diam. Duis elementum elit nunc, eu sagittis odio ultricies in. Morbi luctus mollis dolor quis volutpat. Vivamus at maximus urna, vitae eleifend felis. Nulla bibendum vehicula eleifend. Aenean aliquet interdum enim. Nam consequat purus vitae dui fermentum, at vestibulum ipsum luctus. Suspendisse porta lorem quis suscipit tincidunt. Donec sed felis a lacus pulvinar vestibulum vel a mauris. Aenean at sem eget quam semper laoreet ac non massa. Maecenas ullamcorper pharetra turpis vitae tempor. Ut imperdiet erat nec mattis pretium. Vestibulum nulla nisi, elementum id arcu ut, vehicula condimentum tortor. Cras vestibulum diam at tristique aliquam.'
+    return result;
 };
 
 const styles = {
@@ -96,32 +78,19 @@ const NotesListBox = ({
         );
     }
 
-    notes.map((note: Note, index: number) => {
-        //
-        console.log(`note #${index}:`, note)
-    });
+    const note_list = noteListRender(notes);
+    console.log('note_list_', note_list);
 
     return (
         <React.Fragment>
             <Row gutter={[16, 16]}>
-                <Col style={column} xs={12} sm={12} md={8} lg={6}>
-                    <MockNoteCard note={mockNote} />
-                </Col>
-                <Col style={column} xs={12} sm={12} md={8} lg={6}>
-                    <MockNoteCard note={mockNote} />
-                </Col>
-                <Col style={column} xs={12} sm={12} md={8} lg={6}>
-                    <MockNoteCard note={mockNote} />
-                </Col>
-                <Col style={column} xs={12} sm={12} md={8} lg={6}>
-                    <MockNoteCard note={mockNote} />
-                </Col>
-                <Col style={column} xs={12} sm={12} md={8} lg={6}>
-                    <MockNoteCard note={mockNote} />
-                </Col>
-                <Col style={column} xs={12} sm={12} md={8} lg={6}>
-                    <MockNoteCard note={mockNote} />
-                </Col>
+                {note_list.map((note, index) => {
+                    return (
+                        <Col key={index} style={column} xs={12} sm={12} md={8} lg={6}>
+                            {note}
+                        </Col>
+                    );
+                })}
             </Row>
         </React.Fragment>
     );
