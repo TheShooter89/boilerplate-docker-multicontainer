@@ -1,4 +1,5 @@
 import React, {
+    ChangeEvent,
     useCallback
 } from 'react';
 import {
@@ -31,18 +32,18 @@ const {
 } = Typography;
 
 // ControlPanel types
-interface ControlPanelProps {
+export interface ControlPanelProps {
     searchValue?: string | number | readonly string[] | undefined;
     tagList?: ControlPanelTag[];
     sortBy?: 'oldest' | 'newest';
-    onSearchChange?: () => any;
+    onSearchChange?: (e: ChangeEvent) => any;
     onSearchEnter?: () => any;
-    onTagsChange?: () => any;
+    onTagsChange?: (e: ChangeEvent) => any;
     onTagsEnter?: () => any;
     onSortChange?: () => any;
 }
 
-interface ControlPanelTag {
+export interface ControlPanelTag {
     id: string | number;
     name: string;
 }
@@ -76,9 +77,9 @@ const ControlPanel = ({
     searchValue = undefined,
     tagList = [],
     sortBy = 'newest',
-    onSearchChange = () => undefined,
+    onSearchChange = (e) => undefined,
     onSearchEnter = () => undefined,
-    onTagsChange = () => undefined,
+    onTagsChange = (e) => undefined,
     onTagsEnter = () => undefined,
     onSortChange = () => undefined,
 }: ControlPanelProps) => {

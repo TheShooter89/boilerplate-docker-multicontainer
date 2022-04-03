@@ -1,5 +1,5 @@
 import React, {
-    useCallback
+    useCallback, useState
 } from 'react';
 import {
     Link,
@@ -26,7 +26,7 @@ const {
     Paragraph,
 } = Typography;
 
-const MOCK_NOTES_LIST: Note[] = [
+const MOCK_NOTE_LIST: Note[] = [
     {
         id: 'test1',
         title: 'testing title',
@@ -131,6 +131,65 @@ const MOCK_NOTES_LIST: Note[] = [
     },
 ];
 
+const MOCK_TAG_LIST = [
+    {
+        id: 0,
+        name: 'Zelensky',
+    },
+    {
+        id: 1,
+        name: 'Putin',
+    },
+    {
+        id: 2,
+        name: 'von Der Leyen',
+    },
+];
+
+const filterSearch = (notes: Note[], search: string) => {
+    if (search === '') {
+        return MOCK_NOTE_LIST;
+    }
+
+    const filtered = notes.filter(current_note => {
+        const title = current_note.title.toLowerCase();
+        const body = current_note.body.toLowerCase();
+
+        const match = title.includes(search.toLowerCase()) || body.includes(search.toLowerCase());
+
+        return match;
+    });
+
+    return filtered;
+};
+
+const filterTagSearch = (notes: Note[], tagname: string) => {
+    if (tagname === '') {
+        return notes;
+    }
+
+    const tagname_list = tagname.toLowerCase().split(' ');
+
+    const filtered = notes.filter(current_note => {
+        const tags = current_note.tags;
+
+        let match = false;
+
+        tags.map(current_tag => {
+            tagname_list.map(current_tagname => {
+                //
+                if (current_tag.name.includes(current_tagname.toLowerCase())) {
+                    match = true;
+                }
+            });
+        });
+
+        return match;
+    });
+
+    return filtered;
+};
+
 const styles = {
     rootRow: {
         padding: '2em',
@@ -145,16 +204,34 @@ const styles = {
 };
 
 const Notes = () => {
-    const {
-        rootRow,
+    const [notes, setNotes] = useState(MOCK_NOTE_LIST);
+
+    const {rootRow,
         header,
         headerDescription,
     } = styles;
 
-    const getAllNumbers = useCallback(async () => {
+    const handleSearchChange = useCallback(async (event) => {
         //
-        console.log('Getting all numbers...');
-    }, []);
+        console.log('handleSearchChange - event:', event);
+
+        const filtered_list = filterSearch(notes, event.target.value);
+
+        console.log('handleSearchChange - filtered_list:', filtered_list);
+
+        setNotes(filtered_list);
+    }, [notes]);
+
+    const handleTagsChange = useCallback(async (event) => {
+        //
+        console.log('handleTagsChange - event:', event);
+
+        const filtered_list = filterTagSearch(notes, event.target.value);
+
+        console.log('handleTagsChange - filtered_list:', filtered_list);
+
+        setNotes(filtered_list);
+    }, [notes]);
 
     return (
         <React.Fragment>
@@ -166,22 +243,13 @@ const Notes = () => {
                     <Content>
                         <Paragraph style={headerDescription}>This is the Notes Page</Paragraph>
 
-                        <ControlPanel tagList={[
-                            {
-                                id: 0,
-                                name: 'Zelensky',
-                            },
-                            {
-                                id: 1,
-                                name: 'Putin',
-                            },
-                            {
-                                id: 2,
-                                name: 'von Der Leyen',
-                            },
-                        ]} />
+                        <ControlPanel
+                            tagList={MOCK_TAG_LIST}
+                            onSearchChange={handleSearchChange}
+                            onTagsChange={handleTagsChange}
+                        />
 
-                        <NotesListBox notes={MOCK_NOTES_LIST} emptyMessage='whoops...no notes found!' />
+                        <NotesListBox notes={notes} emptyMessage='whoops...no notes found!' />
                     </Content>
                 </Col>
             </Row>
