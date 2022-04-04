@@ -1,18 +1,10 @@
 import React, {
     ChangeEvent,
-    useCallback
+    useState
 } from 'react';
 import {
-    Link,
-} from 'react-router-dom';
-import {
-    Button,
-    Col,
-    Row,
     Input,
     Radio,
-    Layout,
-    Typography,
     Menu,
 } from 'antd';
 import {
@@ -22,14 +14,8 @@ import {
 
 import theme from '../../config/theme';
 
-const {
-    Header,
-    Content,
-} = Layout;
-const {
-    Title,
-    Paragraph,
-} = Typography;
+import BulkActionsControlItem from './bulkActionsControlItem';
+
 
 // ControlPanel types
 export interface ControlPanelProps {
@@ -60,6 +46,10 @@ const styles = {
     headerDescription: {
         fontFamily: theme.font.serif,
     },
+    editActions: {
+        //
+        marginLeft: 'auto',
+    },
 };
 
 const dateSortOptions = [
@@ -83,6 +73,27 @@ const ControlPanel = ({
     onTagsEnter = () => undefined,
     onSortChange = () => undefined,
 }: ControlPanelProps) => {
+    const [isEditing, setEditing] = useState(false);
+    const [editSelectionCount, setEditSelectionCount] = useState(0);
+    const [editSelectionTotalItems, setEditSelectionTotalItems] = useState(16);
+    const [editSelection, setEditSelection] = useState<Array<any>>([]);
+
+    const handleEditing = {
+        toggle: (e: React.MouseEvent<HTMLButtonElement>) => {
+            setEditing(!isEditing);
+        },
+        cancel: (e: React.MouseEvent<HTMLButtonElement>) => {
+            setEditSelectionCount(0);
+            setEditing(!isEditing);
+        },
+        selectAll: (e: React.MouseEvent<HTMLButtonElement>) => {
+            setEditSelectionCount(editSelectionTotalItems);
+        },
+        undoSelection: (e: React.MouseEvent<HTMLButtonElement>) => {
+            setEditSelectionCount(0);
+        },
+    };
+
     let tagsValue = '';
 
     tagList.map((el: ControlPanelTag, index: number): ControlPanelTag => {
@@ -99,6 +110,7 @@ const ControlPanel = ({
 
     const {
         rootMenu,
+        editActions,
     } = styles;
 
     return (
@@ -138,6 +150,18 @@ const ControlPanel = ({
                         buttonStyle='solid'
                         defaultValue={sortBy}
                         onChange={onSortChange}
+                    />
+                </Menu.Item>
+
+                <Menu.Item style={editActions}>
+                    <BulkActionsControlItem
+                        totalItems={editSelectionTotalItems}
+                        selectedItems={editSelectionCount}
+                        selectionActive={isEditing}
+                        toggleEdit={handleEditing.toggle}
+                        onCancel={handleEditing.cancel}
+                        onSelectAll={handleEditing.selectAll}
+                        onUndoSelection={handleEditing.undoSelection}
                     />
                 </Menu.Item>
             </Menu>
