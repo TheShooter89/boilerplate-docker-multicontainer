@@ -205,6 +205,7 @@ const styles = {
 
 const Notes = () => {
     const [notes, setNotes] = useState(MOCK_NOTE_LIST);
+    const [noteSelection, setNoteSelection] = useState<Array<Note> | false>(false);
 
     const {rootRow,
         header,
@@ -233,6 +234,39 @@ const Notes = () => {
         setNotes(filtered_list);
     }, [notes]);
 
+    const handleToggleSelection = () => {
+        setNoteSelection([]);
+    };
+
+    const handleEditCancel = () => {
+        setNoteSelection(false);
+    };
+
+    const handleToggleSelectedNote = (note: Note) => {
+        //
+        if (!noteSelection) {
+            return setNoteSelection([note]);
+        }
+
+        const new_selection = new Map(noteSelection.map(note => [note.id, note]));
+
+        if (new_selection.has(note.id)) {
+            new_selection.delete(note.id);
+
+            const update_selection: Note[] = [];
+            new_selection.forEach(note => update_selection.push(note));
+
+            return setNoteSelection(update_selection);
+        }
+
+        new_selection.set(note.id, note);
+
+        const update_selection: Note[] = [];
+        new_selection.forEach(note => update_selection.push(note));
+
+        return setNoteSelection(update_selection);
+    };
+
     return (
         <React.Fragment>
             <Row style={rootRow}>
@@ -247,9 +281,16 @@ const Notes = () => {
                             tagList={MOCK_TAG_LIST}
                             onSearchChange={handleSearchChange}
                             onTagsChange={handleTagsChange}
+                            onEditCancel={handleEditCancel}
+                            toggleSelection={handleToggleSelection}
                         />
 
-                        <NotesListBox notes={notes} emptyMessage='whoops...no notes found!' />
+                        <NotesListBox
+                            notes={notes}
+                            selectedNotes={noteSelection}
+                            toggleSelectedNote={handleToggleSelectedNote}
+                            emptyMessage='whoops...no notes found!'
+                        />
                     </Content>
                 </Col>
             </Row>

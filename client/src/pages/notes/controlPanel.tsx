@@ -27,6 +27,8 @@ export interface ControlPanelProps {
     onTagsChange?: (e: ChangeEvent) => any;
     onTagsEnter?: () => any;
     onSortChange?: () => any;
+    onEditCancel?: () => any;
+    toggleSelection?: () => any;
 }
 
 export interface ControlPanelTag {
@@ -72,6 +74,8 @@ const ControlPanel = ({
     onTagsChange = (e) => undefined,
     onTagsEnter = () => undefined,
     onSortChange = () => undefined,
+    onEditCancel = () => undefined,
+    toggleSelection = () => undefined,
 }: ControlPanelProps) => {
     const [isEditing, setEditing] = useState(false);
     const [editSelectionCount, setEditSelectionCount] = useState(0);
@@ -80,9 +84,11 @@ const ControlPanel = ({
 
     const handleEditing = {
         toggle: (e: React.MouseEvent<HTMLButtonElement>) => {
+            toggleSelection();
             setEditing(!isEditing);
         },
         cancel: (e: React.MouseEvent<HTMLButtonElement>) => {
+            onEditCancel();
             setEditSelectionCount(0);
             setEditing(!isEditing);
         },
