@@ -73,7 +73,7 @@ const styles = {
     },
     selected_note: {
         borderColor: 'blue',
-        borderSize: '1em',
+        borderStyle: 'solid',
     },
 };
 
