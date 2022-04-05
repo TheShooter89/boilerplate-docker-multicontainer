@@ -279,10 +279,18 @@ const Notes = () => {
 
                         <ControlPanel
                             tagList={MOCK_TAG_LIST}
+                            totalNotes={notes.length}
+                            selectedNotes={noteSelection ? noteSelection.length : 0}
                             onSearchChange={handleSearchChange}
                             onTagsChange={handleTagsChange}
                             onEditCancel={handleEditCancel}
                             toggleSelection={handleToggleSelection}
+                            editControls={
+                                {
+                                    toggleEdit: () => setNoteSelection([]),
+                                    cancelEdit: () => setNoteSelection(false),
+                                }
+                            }
                         />
 
                         <NotesListBox

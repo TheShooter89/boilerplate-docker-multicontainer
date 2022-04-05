@@ -22,6 +22,9 @@ export interface ControlPanelProps {
     searchValue?: string | number | readonly string[] | undefined;
     tagList?: ControlPanelTag[];
     sortBy?: 'oldest' | 'newest';
+    editing?: boolean;
+    selectedNotes?: number;
+    totalNotes?: number;
     onSearchChange?: (e: ChangeEvent) => any;
     onSearchEnter?: () => any;
     onTagsChange?: (e: ChangeEvent) => any;
@@ -29,6 +32,27 @@ export interface ControlPanelProps {
     onSortChange?: () => any;
     onEditCancel?: () => any;
     toggleSelection?: () => any;
+    searchControls?: ControlPanelSearchControls;
+    tagsControls?: ControlPanelTagsControls;
+    editControls?: ControlPanelEditControls;
+}
+
+// should be extended from a base interface, I know
+// kept duplication just for clarity purpose
+export interface ControlPanelSearchControls {
+    onChange: (e: ChangeEvent) => any;
+    onEnter: (e: ChangeEvent) => any;
+    onSortChange: (e: ChangeEvent) => any;
+}
+
+export interface ControlPanelTagsControls {
+    onChange: (e: ChangeEvent) => any;
+    onEnter: (e: ChangeEvent) => any;
+}
+
+export interface ControlPanelEditControls {
+    toggleEdit: () => any;
+    cancelEdit: () => any;
 }
 
 export interface ControlPanelTag {
@@ -69,6 +93,9 @@ const ControlPanel = ({
     searchValue = undefined,
     tagList = [],
     sortBy = 'newest',
+    editing = false,
+    selectedNotes = 0,
+    totalNotes = 19,
     onSearchChange = (e) => undefined,
     onSearchEnter = () => undefined,
     onTagsChange = (e) => undefined,
@@ -76,19 +103,25 @@ const ControlPanel = ({
     onSortChange = () => undefined,
     onEditCancel = () => undefined,
     toggleSelection = () => undefined,
+    editControls = {
+        toggleEdit: () => console.log('toggleEdit'),
+        cancelEdit: () => console.log('cancelEdit'),
+    },
 }: ControlPanelProps) => {
-    const [isEditing, setEditing] = useState(false);
-    const [editSelectionCount, setEditSelectionCount] = useState(0);
-    const [editSelectionTotalItems, setEditSelectionTotalItems] = useState(16);
+    const [isEditing, setEditing] = useState(editing);
+    const [editSelectionCount, setEditSelectionCount] = useState(selectedNotes);
+    const [editSelectionTotalItems, setEditSelectionTotalItems] = useState(totalNotes);
     const [editSelection, setEditSelection] = useState<Array<any>>([]);
 
     const handleEditing = {
         toggle: (e: React.MouseEvent<HTMLButtonElement>) => {
-            toggleSelection();
+            //toggleSelection();
+            editControls.toggleEdit();
             setEditing(!isEditing);
         },
         cancel: (e: React.MouseEvent<HTMLButtonElement>) => {
-            onEditCancel();
+            //onEditCancel();
+            editControls.cancelEdit();
             setEditSelectionCount(0);
             setEditing(!isEditing);
         },
@@ -161,8 +194,8 @@ const ControlPanel = ({
 
                 <Menu.Item style={editActions}>
                     <BulkActionsControlItem
-                        totalItems={editSelectionTotalItems}
-                        selectedItems={editSelectionCount}
+                        totalItems={totalNotes}
+                        selectedItems={selectedNotes}
                         selectionActive={isEditing}
                         toggleEdit={handleEditing.toggle}
                         onCancel={handleEditing.cancel}
