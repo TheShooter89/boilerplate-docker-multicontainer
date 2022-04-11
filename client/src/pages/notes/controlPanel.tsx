@@ -6,6 +6,7 @@ import {
     Input,
     Radio,
     Menu,
+    RadioChangeEvent,
 } from 'antd';
 import {
     FileTextOutlined,
@@ -25,13 +26,6 @@ export interface ControlPanelProps {
     editing?: boolean;
     selectedNotes?: number;
     totalNotes?: number;
-    onSearchChange?: (e: ChangeEvent) => any;
-    onSearchEnter?: () => any;
-    onTagsChange?: (e: ChangeEvent) => any;
-    onTagsEnter?: () => any;
-    onSortChange?: () => any;
-    onEditCancel?: () => any;
-    toggleSelection?: () => any;
     searchControls?: ControlPanelSearchControls;
     tagsControls?: ControlPanelTagsControls;
     editControls?: ControlPanelEditControls;
@@ -41,18 +35,21 @@ export interface ControlPanelProps {
 // kept duplication just for clarity purpose
 export interface ControlPanelSearchControls {
     onChange: (e: ChangeEvent) => any;
-    onEnter: (e: ChangeEvent) => any;
-    onSortChange: (e: ChangeEvent) => any;
+    onEnter: (e: any) => any;
+    onSortChange: (e: RadioChangeEvent) => any;
 }
 
 export interface ControlPanelTagsControls {
     onChange: (e: ChangeEvent) => any;
-    onEnter: (e: ChangeEvent) => any;
+    onEnter: (e: any) => any;
 }
 
 export interface ControlPanelEditControls {
     toggleEdit: () => any;
     cancelEdit: () => any;
+    selectAll: () => any;
+    undoSelection: () => any;
+    deleteSelected: () => any;
 }
 
 export interface ControlPanelTag {
@@ -96,40 +93,70 @@ const ControlPanel = ({
     editing = false,
     selectedNotes = 0,
     totalNotes = 19,
-    onSearchChange = (e) => undefined,
-    onSearchEnter = () => undefined,
-    onTagsChange = (e) => undefined,
-    onTagsEnter = () => undefined,
-    onSortChange = () => undefined,
-    onEditCancel = () => undefined,
-    toggleSelection = () => undefined,
     editControls = {
         toggleEdit: () => console.log('toggleEdit'),
         cancelEdit: () => console.log('cancelEdit'),
+        selectAll: () => console.log('selectAll'),
+        undoSelection: () => console.log('selectAll'),
+        deleteSelected: () => console.log('deleteSelected'),
+    },
+    searchControls = {
+        onChange: (e) => console.log('onChange - e:', e),
+        onEnter: (e) => console.log('onEnter - e:', e),
+        onSortChange: (e) => console.log('onSortChange - e:', e),
+    },
+    tagsControls = {
+        onChange: (e) => console.log('onChange - e:', e),
+        onEnter: (e) => console.log('onEnter - e:', e),
     },
 }: ControlPanelProps) => {
     const [isEditing, setEditing] = useState(editing);
-    const [editSelectionCount, setEditSelectionCount] = useState(selectedNotes);
-    const [editSelectionTotalItems, setEditSelectionTotalItems] = useState(totalNotes);
-    const [editSelection, setEditSelection] = useState<Array<any>>([]);
+
+    const handleSearching = {
+        change: (e: ChangeEvent) => {
+            console.log('handleSearching - change')
+            searchControls.onChange(e);
+        },
+        enter: (e: ChangeEvent) => {
+            console.log('handleSearching - enter - e:', e)
+            searchControls.onEnter(e);
+        },
+        sort: (e: RadioChangeEvent) => {
+            console.log('handleSearching - sort')
+            searchControls.onSortChange(e);
+        },
+    };
 
     const handleEditing = {
         toggle: (e: React.MouseEvent<HTMLButtonElement>) => {
-            //toggleSelection();
             editControls.toggleEdit();
             setEditing(!isEditing);
         },
         cancel: (e: React.MouseEvent<HTMLButtonElement>) => {
-            //onEditCancel();
             editControls.cancelEdit();
-            setEditSelectionCount(0);
             setEditing(!isEditing);
         },
         selectAll: (e: React.MouseEvent<HTMLButtonElement>) => {
-            setEditSelectionCount(editSelectionTotalItems);
+            editControls.selectAll();
         },
         undoSelection: (e: React.MouseEvent<HTMLButtonElement>) => {
-            setEditSelectionCount(0);
+            editControls.undoSelection();
+        },
+        deleteSelected: (e: React.MouseEvent<HTMLButtonElement>) => {
+            editControls.deleteSelected();
+        },
+    };
+
+    const handleTagSearch = {
+        change: (e: ChangeEvent) => {
+            console.log('handleSearching - change')
+            //onSearchChange(e);
+            tagsControls.onChange(e);
+        },
+        enter: (e: React.KeyboardEvent<HTMLInputElement>) => {
+            console.log('handleSearching - enter - e:', e)
+            //onSearchEnter();
+            tagsControls.onEnter(e);
         },
     };
 
@@ -165,8 +192,8 @@ const ControlPanel = ({
                         placeholder='search notes...'
                         prefix={<FileTextOutlined />}
                         defaultValue={searchValue}
-                        onChange={onSearchChange}
-                        onPressEnter={onSearchEnter}
+                        onChange={searchControls.onChange}
+                        onPressEnter={searchControls.onEnter}
                     />
                 </Menu.Item>
 
@@ -176,8 +203,8 @@ const ControlPanel = ({
                         placeholder='filter by tags...'
                         prefix={<TagsOutlined />}
                         defaultValue={tagsValue}
-                        onChange={onTagsChange}
-                        onPressEnter={onTagsEnter}
+                        onChange={handleTagSearch.change}
+                        onPressEnter={handleTagSearch.enter}
                         allowClear
                     />
                 </Menu.Item>
@@ -188,7 +215,7 @@ const ControlPanel = ({
                         optionType='button'
                         buttonStyle='solid'
                         defaultValue={sortBy}
-                        onChange={onSortChange}
+                        onChange={handleSearching.sort}
                     />
                 </Menu.Item>
 
@@ -201,6 +228,7 @@ const ControlPanel = ({
                         onCancel={handleEditing.cancel}
                         onSelectAll={handleEditing.selectAll}
                         onUndoSelection={handleEditing.undoSelection}
+                        onDeleteSelected={handleEditing.deleteSelected}
                     />
                 </Menu.Item>
             </Menu>
