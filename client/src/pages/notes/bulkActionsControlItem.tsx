@@ -46,6 +46,7 @@ const BulkActionsControlItem = ({
     toggleEdit = (e) => console.log('toggleEdit'),
     onSelectAll = (e) => console.log('onSelectAll'),
     onUndoSelection = (e) => console.log('onUndoSelection'),
+    onDeleteSelected = (e) => console.log('onDeleteSelected'),
 }: BulkActionsControlItemProps) => {
     const {
         undoButton,
@@ -89,6 +90,7 @@ const BulkActionsControlItem = ({
                 <Button
                     type='primary'
                     title='Delete selected'
+                    onClick={onDeleteSelected}
                     icon={<DeleteOutlined />}
                     danger
                 >
