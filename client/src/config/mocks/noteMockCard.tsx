@@ -1,11 +1,4 @@
-import React, {
-    useCallback
-
-} from 'react';
-import {
-    Link,
-
-} from 'react-router-dom';
+import React from 'react';
 import {
     Button,
     Typography,
@@ -22,9 +15,7 @@ import {
 import theme from '../theme';
 
 const {
-    Title,
     Paragraph,
-
 } = Typography;
 
 export interface MockNoteCardProps {
@@ -35,7 +26,6 @@ export interface MockNoteCardProps {
 const styles = {
     rootCard: {
         fontFamily: theme.font.serif,
-
     },
 
 };

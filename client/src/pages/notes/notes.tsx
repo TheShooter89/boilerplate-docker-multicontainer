@@ -2,10 +2,6 @@ import React, {
     useCallback, useState
 } from 'react';
 import {
-    Link,
-} from 'react-router-dom';
-import {
-    Button,
     Col,
     Row,
     Layout,
@@ -61,7 +57,6 @@ const filterTagSearch = (notes: Note[], tagname: string) => {
 
         tags.map(current_tag => {
             tagname_list.map(current_tagname => {
-                //
                 if (current_tag.name.includes(current_tagname.toLowerCase())) {
                     match = true;
                 }
@@ -97,7 +92,6 @@ const Notes = () => {
     } = styles;
 
     const handleSearchChange = useCallback(async (event) => {
-        //
         console.log('handleSearchChange - event:', event);
 
         const filtered_list = filterSearch(notes, event.target.value);
@@ -108,7 +102,6 @@ const Notes = () => {
     }, [notes]);
 
     const handleTagsChange = useCallback(async (event) => {
-        //
         console.log('handleTagsChange - event:', event);
 
         const filtered_list = filterTagSearch(notes, event.target.value);
@@ -118,16 +111,7 @@ const Notes = () => {
         setNotes(filtered_list);
     }, [notes]);
 
-    const handleToggleSelection = () => {
-        setNoteSelection([]);
-    };
-
-    const handleEditCancel = () => {
-        setNoteSelection(false);
-    };
-
     const handleToggleSelectedNote = (note: Note) => {
-        //
         if (!noteSelection) {
             return setNoteSelection([note]);
         }

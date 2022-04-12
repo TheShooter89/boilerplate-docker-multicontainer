@@ -1,18 +1,10 @@
-import React, {
-    useCallback
-} from 'react';
-import {
-    Link,
-} from 'react-router-dom';
+import React from 'react';
 import {
     Button,
     Col,
     Row,
-    Input,
-    Radio,
     Layout,
     Typography,
-    Menu,
 } from 'antd';
 import {
     CheckCircleTwoTone,
@@ -20,11 +12,11 @@ import {
 } from '@ant-design/icons';
 
 import theme from '../../config/theme';
-
-import MockNoteCard from './mockNoteCard';
+import {
+    MockNoteCard,
+} from '../../config/mocks';
 
 const {
-    Header,
     Content,
 } = Layout;
 const {
@@ -41,9 +33,7 @@ export interface NotesListBoxProps {
 }
 
 const noteListRender = (list: Note[]) => {
-    //
     const result = new Map(list.map((note: Note, index: number,) => {
-        //
         return (
             [
                 note.id,
@@ -52,21 +42,12 @@ const noteListRender = (list: Note[]) => {
         );
     }));
 
-    /*
-    const result = list.map((note: Note, index: number,) => {
-        //
-        return (
-            <MockNoteCard key={'mock-note-' + index} note={note} />
-        );
-        });
-    */
-
     return result;
 };
 
 const styles = {
     column: {
-        //backgroundColor: 'yellow',
+        //
     },
     message: {
         fontFamily: theme.font.serif,
@@ -80,7 +61,7 @@ const styles = {
 const NotesListBox = ({
     notes = [],
     selectedNotes,
-    toggleSelectedNote = (note) => console.log('toggleSelectedNote'),
+    toggleSelectedNote = (note) => console.log('toggleSelectedNote - note:', note),
     emptyMessage = 'no notes to show...',
 }: NotesListBoxProps) => {
     const {
