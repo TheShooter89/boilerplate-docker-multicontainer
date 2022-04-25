@@ -70,7 +70,6 @@ const styles = {
         fontFamily: theme.font.serif,
     },
     editActions: {
-        //
         marginLeft: 'auto',
     },
 };
@@ -150,12 +149,10 @@ const ControlPanel = ({
     const handleTagSearch = {
         change: (e: ChangeEvent) => {
             console.log('handleSearching - change')
-            //onSearchChange(e);
             tagsControls.onChange(e);
         },
         enter: (e: React.KeyboardEvent<HTMLInputElement>) => {
             console.log('handleSearching - enter - e:', e)
-            //onSearchEnter();
             tagsControls.onEnter(e);
         },
     };
@@ -163,9 +160,7 @@ const ControlPanel = ({
     let tagsValue = '';
 
     tagList.map((el: ControlPanelTag, index: number): ControlPanelTag => {
-        //
         if (index < tagList.length - 1) {
-            //
             tagsValue += el.name + ', ';
             return el;
         }

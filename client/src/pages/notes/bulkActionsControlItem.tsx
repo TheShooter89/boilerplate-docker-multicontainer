@@ -11,8 +11,6 @@ import {
     CheckOutlined,
 } from '@ant-design/icons';
 
-import theme from '../../config/theme';
-
 // BulkActionsControlItem types
 export interface BulkActionsControlItemProps {
     selectionActive?: boolean;
@@ -27,12 +25,10 @@ export interface BulkActionsControlItemProps {
 
 const styles = {
     undoButton: {
-        //fontFamily: theme.font.serif,
         backgroundColor: 'orange',
         borderColor: 'orange',
     },
     selectAllButton: {
-        //fontFamily: theme.font.serif,
         backgroundColor: 'orange',
         borderColor: 'orange',
     },
