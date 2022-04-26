@@ -15,6 +15,7 @@ import theme from '../../config/theme';
 import {
     MockNoteCard,
 } from '../../config/mocks';
+import NoteCard from '../../components/note';
 
 const {
     Content,
@@ -37,7 +38,7 @@ const noteListRender = (list: Note[]) => {
         return (
             [
                 note.id,
-                <MockNoteCard key={'mock-note-' + index} note={note} />,
+                <NoteCard key={'note-' + index} note={note} />,
             ]
         );
     }));
